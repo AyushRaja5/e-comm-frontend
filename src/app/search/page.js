@@ -2,7 +2,7 @@
 "use client"; // Ensure this component is treated as a client-side component
 
 import { useSearchParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import ProductCard from '@/components/ProductCard';
 
 const SearchPage = () => {
@@ -32,6 +32,7 @@ const SearchPage = () => {
   }, [query]);
 
   return (
+    <Suspense>
     <main className="container mx-auto my-8 p-6">
       <h1 className="text-2xl font-bold mb-4">Search Results for &quot;{query}&quot;</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -59,6 +60,7 @@ const SearchPage = () => {
         )}
       </div>
     </main>
+    </Suspense>
   );
 };
 
