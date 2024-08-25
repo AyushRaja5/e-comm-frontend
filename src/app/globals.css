@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  height: 100%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -30,4 +31,23 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 0 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  background-color: #fff; /* White background */
+  border-bottom: 1px solid #e1e1e1; /* Light grey border */
+  padding: 16px 0;
 }
