@@ -1,4 +1,3 @@
-// src/app/auth/login/page.js
 "use client";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -31,13 +30,6 @@ const LoginPage = () => {
         setError(data.message || 'Login failed');
       }
 
-      if (res.ok) {
-        // Handle successful login (e.g., save token, redirect)
-        console.log('Login successful:', data);
-        router.push('/'); 
-      } else {
-        setError(data.message || 'Login failed');
-      }
     } catch (error) {
       setError('An error occurred');
       console.error('Error:', error);
@@ -75,7 +67,7 @@ const LoginPage = () => {
           <button type="submit" className="w-full bg-blue-500 text-white p-3 rounded-md hover:bg-blue-600 transition-colors">Login</button>
         </form>
         <p className="mt-4 text-center">
-          Don't have an account? <a href="/auth/signup" className="text-blue-500 hover:underline">Sign up</a>
+          Don&apos;t have an account? <a href="/auth/signup" className="text-blue-500 hover:underline">Sign up</a>
         </p>
       </div>
     </div>

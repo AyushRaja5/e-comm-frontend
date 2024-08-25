@@ -28,7 +28,7 @@ const SearchPage = () => {
 
   return (
     <main className="container mx-auto my-8 p-6">
-      <h1 className="text-2xl font-bold mb-4">Search Results for "{query}"</h1>
+      <h1 className="text-2xl font-bold mb-4">Search Results for &quot;{query}&quot;</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {products.length > 0 ? (
           products.map((product) => (
@@ -36,7 +36,7 @@ const SearchPage = () => {
           ))
         ) : (
           <div>
-            <p>No products found for "{query}".</p>
+            <p>No products found for &quot;{query}&quot;.</p>
             <p className="mt-4">Try searching with these keywords:</p>
             <ul className="mt-4 p-4 bg-gray-100 rounded-lg shadow-md">
               {suggestedKeywords.map((keyword, index) => (
