@@ -6,7 +6,7 @@ import ProductCard from '@/components/ProductCard';
 
 const SearchPage = () => {
   const searchParams = useSearchParams();
-  const query = searchParams.get('query') || '';
+  const query = searchParams.get('query');
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
