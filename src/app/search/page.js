@@ -1,34 +1,37 @@
-"use client"; // Ensure this component is treated as a client-side component
+"use client";
 
 import { useSearchParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import ProductCard from '@/components/ProductCard';
 
 const SearchPage = () => {
   const searchParams = useSearchParams();
-  const query = searchParams.get('query');
+  const query = searchParams.get('query') || '';
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true); // Added loading state
+  const [loading, setLoading] = useState(true);
 
-  const suggestedKeywords = ["electronics", "fashion","clothes"];
+  const suggestedKeywords = ["electronics", "fashion", "clothes"];
 
   useEffect(() => {
     const fetchProducts = async () => {
       if (query) {
         try {
+          console.log(`Fetching products for query: ${query}`); // Debugging
           const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/searching?query=${encodeURIComponent(query)}`);
           if (!res.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error(`Network response was not ok: ${res.statusText}`);
           }
           const data = await res.json();
+          console.log("Fetched products:", data); // Debugging
           setProducts(data);
         } catch (error) {
-          console.error('Failed to fetch products', error);
+          console.error('Failed to fetch products:', error);
         } finally {
-          setLoading(false); // Set loading to false after fetch
+          setLoading(false);
         }
       } else {
-        setLoading(false); // Set loading to false if no query
+        console.log('No query provided, setting loading to false.'); // Debugging
+        setLoading(false);
       }
     };
 
@@ -36,10 +39,11 @@ const SearchPage = () => {
   }, [query]);
 
   if (loading) {
-    return <div className="text-center">Loading...</div>; // Show loading message while fetching
+    return <div className="text-center">Loading...</div>;
   }
 
   return (
+    <Suspense fallback={<p>Loading feed...</p>}>
     <main className="container mx-auto my-8 p-6">
       <h1 className="text-2xl font-bold mb-4">Search Results for &quot;{query}&quot;</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -67,6 +71,7 @@ const SearchPage = () => {
         )}
       </div>
     </main>
+    </Suspense>
   );
 };
 
