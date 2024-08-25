@@ -32,7 +32,7 @@ const SearchPage = () => {
   }, [query]);
 
   return (
-    <Suspense>
+    <Suspense  fallback={<>Loading...</>}>
     <main className="container mx-auto my-8 p-6">
       <h1 className="text-2xl font-bold mb-4">Search Results for &quot;{query}&quot;</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
