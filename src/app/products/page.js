@@ -1,5 +1,5 @@
 // src/app/products/page.js
-'use client'
+"use client";
 import ProductCard from '@/components/ProductCard';
 import { useEffect, useState } from 'react';
 
