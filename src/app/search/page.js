@@ -1,4 +1,6 @@
-"use client";
+// src/app/search/page.js
+"use client"; // Ensure this component is treated as a client-side component
+
 import { useSearchParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import ProductCard from '@/components/ProductCard';
@@ -15,6 +17,9 @@ const SearchPage = () => {
       const fetchProducts = async () => {
         try {
           const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/searching?query=${encodeURIComponent(query)}`);
+          if (!res.ok) {
+            throw new Error('Network response was not ok');
+          }
           const data = await res.json();
           setProducts(data);
         } catch (error) {
