@@ -1,4 +1,5 @@
 // src/app/seller/add-product.js
+"use client";
 import { useState } from 'react';
 
 const AddProductPage = () => {

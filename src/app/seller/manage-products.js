@@ -1,4 +1,5 @@
 // src/app/seller/manage-products.js
+"use client";
 import { useEffect, useState } from 'react';
 
 const ManageProductsPage = () => {
